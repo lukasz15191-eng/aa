@@ -1,38 +1,131 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lukasz Profile</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lukasz — Profile</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<div class="profile-card">
-    <div class="avatar">
-        <img src="https://xatimg.com/image/7DKiHbhcCvvv.png">
+  <!-- NAV -->
+  <nav class="topnav">
+    <ul>
+      <li class="active">Home</li>
+      <li>Friends</li>
+      <li>Video</li>
+      <li>Gallery</li>
+    </ul>
+    <div class="status-pill">OFFLINE</div>
+  </nav>
+
+  <!-- CARD -->
+  <main class="card">
+    <!-- banner -->
+    <div class="banner">
+      <div class="banner-overlay"></div>
     </div>
 
-    <h1 class="name">Lukasz</h1>
-    <div class="id">785544650</div>
-    <div class="country">📍 UK</div>
+    <!-- header row -->
+    <div class="header">
+      <div class="avatar-wrap">
+        <div class="avatar">
+          <img src="https://xatimg.com/image/7DKiHbhcCvvv.png" alt="avatar">
+        </div>
+      </div>
 
-    <p class="bio">
-        W moich żyłach płynie mrok,
-        a moje serce bije w rytm piekielnego tańca.
-        Moje słowa są niczym ostrza.
-        Przyciągam i odpycham, intryguję i przerażam.
-        Jestem zagadką, którą trudno rozwikłać.
-    </p>
-
-    <a class="relation" href="https://xat.com/web_gear/chat/editprofile.php?UserId=785544650" target="_blank">❤️ RELATION</a>
-
-    <div class="contact-icons">
-        <a href="https://xat.com/web_gear/chat/editprofile.php?UserId=785544650" target="_blank" title="Private Message">💬</a>
-        <a href="https://xat.com/addfriend?id=785544650" target="_blank" title="Add Friend">🤝</a>
-        <a href="https://xat.com/transfer?UserId=785544650" target="_blank" title="Transfer">💸</a>
+      <div class="title-wrap">
+        <h1 class="nick">Lukasz</h1>
+        <div class="role">Gamer</div>
+        <div class="meta">
+          <span class="dot" title="ID"></span> 785544650
+          &nbsp;&nbsp;•&nbsp;&nbsp;📍 Polska
+        </div>
+      </div>
     </div>
-</div>
 
+    <!-- quick actions -->
+    <div class="quick-actions">
+      <a class="qa" title="Private Message" target="_blank"
+         href="https://xat.com/web_gear/chat/editprofile.php?UserId=785544650">💬</a>
+      <a class="qa" title="Home" target="_blank"
+         href="https://xat.me/">🏠</a>
+      <a class="qa" title="Transfer" target="_blank"
+         href="https://xat.com/transfer?UserId=785544650">💸</a>
+    </div>
+
+    <!-- bio -->
+    <div class="bio">
+      W moich żyłach płynie mrok, a moje serce bije w rytm piekielnego tańca.
+      Moje słowa są niczym ostrza. Przyciągam i odpycham, intryguję i przerażam.
+      Jestem zagadką, którą trudno rozwikłać.
+    </div>
+
+    <!-- relation button -->
+    <div class="relation-wrap">
+      <button id="relationBtn" class="relation">❤️ RELATION</button>
+    </div>
+
+    <!-- social -->
+    <div class="social-title">SOCIAL MEDIA</div>
+    <div class="socials">
+      <a class="social" title="xat.me" target="_blank" href="https://xat.me/">🌀</a>
+      <a class="social" title="Spotify" target="_blank" href="https://open.spotify.com/">🎧</a>
+    </div>
+
+    <!-- footer -->
+    <footer class="footer">
+      Theme – xatme.com – Lukasz – 785544650
+    </footer>
+  </main>
+
+  <!-- RELATION MODAL -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">✕</button>
+
+      <div class="modal-avatar">
+        <div class="avatar ringless">
+          <img src="https://xatimg.com/image/7DKiHbhcCvvv.png" alt="avatar">
+        </div>
+      </div>
+
+      <div class="modal-name">RELATION</div>
+      <div class="modal-badge">MARRIED</div>
+
+      <p class="modal-text">
+        Z kim chcesz powiązać relację? Wpisz **XAT ID** poniżej,
+        a otworzę PM do tej osoby.
+      </p>
+
+      <div class="modal-actions">
+        <input id="partnerId" class="id-input" type="text" placeholder="Wpisz XAT ID (np. 123456789)">
+        <button id="openPm" class="pm-btn">XAT — PM</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- tiny JS for modal + PM -->
+  <script>
+    const modal = document.getElementById('modal');
+    const open = document.getElementById('relationBtn');
+    const close = document.getElementById('modalClose');
+    const pmBtn = document.getElementById('openPm');
+    const idInput = document.getElementById('partnerId');
+
+    function showModal(){ modal.setAttribute('aria-hidden','false'); }
+    function hideModal(){ modal.setAttribute('aria-hidden','true'); }
+
+    open.addEventListener('click', showModal);
+    close.addEventListener('click', hideModal);
+    modal.addEventListener('click', e => { if(e.target === modal) hideModal(); });
+
+    pmBtn.addEventListener('click', () => {
+      const id = (idInput.value || '').trim();
+      if(!id) { idInput.focus(); return; }
+      const url = `https://xat.com/web_gear/chat/editprofile.php?UserId=${encodeURIComponent(id)}`;
+      window.open(url, '_blank');
+    });
+  </script>
 </body>
 </html>
