@@ -26,7 +26,8 @@ body{
   border-radius:18px;
   overflow:hidden;
   background:url("https://xatimg.com/image/3aVu4Ug1r3p2.png") center/cover no-repeat;
-  box-shadow:0 5px 35px rgba(0,0,0,.65);
+  box-shadow:0 5px 35px rgba(0,0,0,.65); 
+  min-height: 900px; /* NOWE - ramka dłuższa */
 }
 
 /* BANNER */
