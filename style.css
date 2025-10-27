@@ -51,12 +51,22 @@ body{
   margin:0;
   font-size:34px;
   font-weight:700;
-  background: linear-gradient(to bottom, #f9f9f9 0%, #6f6f6f 100%);
+
+  background: linear-gradient(to bottom,
+    #ffffff 0%,
+    #b3b3b3 50%,
+    #6c6c6c 100%
+  );
+
+  background-clip: text;
   -webkit-background-clip: text;
+
+  color: transparent;
   -webkit-text-fill-color: transparent;
+
   text-shadow:
-    0 0 6px rgba(255,255,255,0.35),
-    0 0 16px rgba(0,200,255,0.55);
+    0 0 6px rgba(255,255,255,0.25),
+    0 0 14px rgba(0,200,255,0.35);
 }
 
 .role{
@@ -135,4 +145,5 @@ body{
   opacity:.7;
   margin-bottom:16px;
 }
+
 
