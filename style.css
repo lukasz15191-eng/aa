@@ -20,12 +20,14 @@ body{
 
 /* CARD */
 .card{
-  width:680px;
+  width:720px;
   background:url("https://xatimg.com/image/3aVu4Ug1r3p2.png") center/cover no-repeat;
-  padding:40px 22px 90px;
+  padding:40px 22px 32px;
   border-radius:18px;
-  box-shadow:0 0 35px rgba(0,0,0,.7);
   text-align:center;
+  box-shadow:0 0 40px rgba(0,0,0,.6);
+  display:flex;          /* NOWE */
+  flex-direction:column; /* NOWE */
 }
 
 /* AVATAR */
@@ -152,4 +154,3 @@ body{
   background:#00afff;color:#000;
   font-weight:700;border:0;cursor:pointer;
 }
-
