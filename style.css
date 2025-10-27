@@ -18,6 +18,11 @@ body{
   padding:0 24px;
   border-radius:18px;
   box-shadow:0 0 40px rgba(0,0,0,.6);
+  /* neon aura around the card */
+box-shadow:
+  0 0 25px rgba(0,200,255,.38),
+  0 0 55px rgba(0,200,255,.22),
+  0 0 5px rgba(0,200,255,.5) inset;
 
   display:flex;
   flex-direction:column;
@@ -196,3 +201,4 @@ animation: fadeIn 0.9s ease forwards;
   filter: blur(18px);
   pointer-events:none;
 }
+
