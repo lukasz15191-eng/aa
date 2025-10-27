@@ -2,7 +2,7 @@
 
 body{
   margin:0;
-  min-height:100vh;
+  height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
@@ -11,26 +11,26 @@ body{
   font-family:'Inter',sans-serif;
 }
 
+/* KARTA PRO – glow dookoła */
 .card{
   width:720px;
-  height:860px; /* ✅ OSTATECZNA wysokość, jak chcesz */
+  height:860px;
   background:url("https://xatimg.com/image/3aVu4Ug1r3p2.png") center/cover no-repeat;
   padding:0 24px;
   border-radius:18px;
-  box-shadow:0 0 40px rgba(0,0,0,.6);
+  text-align:center;
+
+  position:relative;
+
   display:flex;
   flex-direction:column;
-  justify-content:space-between; /* ✅ Footer zawsze na dole */
-  text-align:center; 
-  border: 2px solid rgba(0,200,255,0.1);
-box-shadow:
-  position: relative;
-  0 0 25px rgba(0,200,255,0.35),
-  0 0 55px rgba(0,200,255,0.22);
+  justify-content:space-between;
 
-opacity: 0;
-transform: translateY(12px);
-animation: fadeIn 0.9s ease forwards;
+  border:2px solid rgba(0,200,255,0.15);
+  box-shadow:
+    0 0 25px rgba(0,200,255,0.38),
+    0 0 55px rgba(0,200,255,0.22),
+    0 0 6px rgba(0,200,255,0.6) inset;
 }
 
 /* HEADER */
@@ -38,6 +38,7 @@ animation: fadeIn 0.9s ease forwards;
   margin-top:34px;
 }
 
+/* AVATAR – delikatny puls */
 .avatar{
   width:140px;
   height:140px;
@@ -48,52 +49,45 @@ animation: fadeIn 0.9s ease forwards;
   box-shadow:
     0 0 26px rgba(0,200,255,.75),
     0 0 42px rgba(0,200,255,.35);
-  animation: avatarPulse 3.5s ease-in-out infinite;
+  animation:avatarPulse 3.5s ease-in-out infinite;
 }
 @keyframes avatarPulse {
-  0%, 100% { transform: scale(1); }
-  50%      { transform: scale(1.025); }
+  0%,100%{ transform:scale(1);}
+  50%{ transform:scale(1.025);}
 }
 .avatar img{
   width:100%;height:100%;
   object-fit:cover;border-radius:50%;
 }
+.avatar:hover{
+  box-shadow:
+    0 0 36px rgba(0,200,255,.9),
+    0 0 62px rgba(0,200,255,.55);
+  transform:scale(1.05);
+}
 
-/* NICK */
+/* NICK – metal + neon hover */
 .nick{
-  margin: 0;
-  font-size: 34px;
-  font-weight: 700;
-
-  /* mocny metaliczny gradient: jasne -> ciemne srebro */
-  background: linear-gradient(90deg,
+  margin:0;
+  font-size:34px;
+  font-weight:700;
+  background:linear-gradient(90deg,
     #f7f7f7 0%,
     #bfbfbf 40%,
     #7a7a7a 75%,
-    #4e4e4e 100%
-  );
-
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-
-  /* subtelny glow, bez niebieskiego */
-  filter: drop-shadow(0 0 4px rgba(255,255,255,.18));
-  transition: 0.25s ease;
+    #4e4e4e 100%);
+  background-clip:text;
+  -webkit-background-clip:text;
+  color:transparent;
+  -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 4px rgba(255,255,255,.18));
+  transition:0.25s ease;
 }
 .nick:hover{
   text-shadow:
     0 0 8px rgba(255,255,255,0.5),
-    0 0 18px rgba(0,200,255,0.45),
-    0 0 32px rgba(0,200,255,0.25);
-}
-.avatar:hover{
-  box-shadow:
-    0 0 32px rgba(0,200,255,.85),
-    0 0 64px rgba(0,200,255,.45);
-  transform: scale(1.04);
-  transition: 0.25s ease;
+    0 0 22px rgba(0,200,255,0.55),
+    0 0 42px rgba(0,200,255,0.25);
 }
 
 .role{
@@ -104,15 +98,17 @@ animation: fadeIn 0.9s ease forwards;
 }
 
 .meta{
-  margin-top:4px;font-size:13px;opacity:.8;
+  margin-top:4px;
+  font-size:13px;
+  opacity:.8;
 }
-
 .status-dot{
-  width:10px;height:10px;
+  width:10px;
+  height:10px;
   background:#00ff9a;
-  display:inline-block;
   margin-right:6px;
   border-radius:50%;
+  display:inline-block;
 }
 
 /* QUICK ICONS */
@@ -125,7 +121,11 @@ animation: fadeIn 0.9s ease forwards;
   background:rgba(0,0,0,.32);
   backdrop-filter:blur(5px);
 }
-.qa{font-size:18px;color:#fff;text-decoration:none;}
+.qa{
+  font-size:18px;
+  color:#fff;
+  text-decoration:none;
+}
 
 /* BIO */
 .bio{
@@ -133,11 +133,11 @@ animation: fadeIn 0.9s ease forwards;
   width:75%;
   margin:14px auto 0;
   line-height:1.55;
-  opacity:.92;
+  opacity:.95;
 }
 
-/* RELATION BUTTON */
-.relation-wrap{margin-top:8px;}
+/* RELATION */
+.relation-wrap{ margin-top:8px; }
 .relation{
   background:#ff0062;
   border:0;
@@ -146,9 +146,13 @@ animation: fadeIn 0.9s ease forwards;
   padding:12px 42px;
   border-radius:999px;
   cursor:pointer;
+  transition:.2s;
+}
+.relation:hover{
+  background:#ff116e;
 }
 
-/* SEPARATOR */
+/* LINIA */
 .separator{
   width:50%;
   height:1px;
@@ -156,14 +160,22 @@ animation: fadeIn 0.9s ease forwards;
   margin:16px auto;
 }
 
-/* SOCIAL MEDIA */
-.social-title{font-size:14px;font-weight:700;opacity:.85;}
+/* SOCIAL */
+.social-title{
+  font-size:14px;
+  font-weight:700;
+  opacity:.85;
+}
 .socials{
-  display:flex;justify-content:center;
-  gap:14px;margin-top:12px;
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  margin-top:12px;
 }
 .social{
-  font-size:24px;color:#fff;text-decoration:none;
+  font-size:24px;
+  color:#fff;
+  text-decoration:none;
 }
 
 /* FOOTER */
@@ -172,13 +184,8 @@ animation: fadeIn 0.9s ease forwards;
   opacity:.7;
   margin-bottom:16px;
 }
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-/* glowing base under card */
+
+/* PODŚWIETLENIE OD DOŁU */
 .card::after{
   content:"";
   position:absolute;
@@ -187,13 +194,9 @@ animation: fadeIn 0.9s ease forwards;
   transform:translateX(-50%);
   width:90%;
   height:28px;
-
-  background: radial-gradient(circle,
+  background:radial-gradient(circle,
     rgba(0,200,255,.45) 0%,
-    rgba(0,200,255,0) 80%
-  );
-  filter: blur(18px);
+    rgba(0,200,255,0) 80%);
+  filter:blur(18px);
   pointer-events:none;
 }
-
-
