@@ -25,6 +25,7 @@ body{
   text-align:center; 
   border: 2px solid rgba(0,200,255,0.1);
 box-shadow:
+  position: relative;
   0 0 25px rgba(0,200,255,0.35),
   0 0 55px rgba(0,200,255,0.22);
 
@@ -178,4 +179,20 @@ animation: fadeIn 0.9s ease forwards;
     transform: translateY(0);
   }
 }
+/* glowing base under card */
+.card::after{
+  content:"";
+  position:absolute;
+  bottom:-25px;
+  left:50%;
+  transform:translateX(-50%);
+  width:90%;
+  height:28px;
 
+  background: radial-gradient(circle,
+    rgba(0,200,255,.45) 0%,
+    rgba(0,200,255,0) 80%
+  );
+  filter: blur(18px);
+  pointer-events:none;
+}
