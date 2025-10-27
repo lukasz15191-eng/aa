@@ -2,45 +2,32 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lukasz — Profile</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lukasz - Profile</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- CARD -->
   <main class="card">
-
-    <!-- BANNER -->
-    <div class="banner">
-      <div class="banner-overlay"></div>
-    </div>
 
     <!-- HEADER -->
     <div class="header">
-      <div class="avatar-wrap">
-        <div class="avatar">
-          <img src="https://xatimg.com/image/7DKiHbhcCvvv.png" alt="avatar">
-        </div>
+      <div class="avatar">
+        <img src="https://xatimg.com/image/7DKiHbhcCvvv.png" alt="avatar">
       </div>
 
-      <div class="title-wrap">
-        <h1 class="nick">Lukasz</h1>
-        <div class="role">Gamer</div>
-        <div class="meta">
-          <span class="status-dot offline"></span> 785544650 • 📍 Polska
-        </div>
+      <h1 class="nick">Lukasz</h1>
+      <div class="role">Gamer</div>
+      <div class="meta">
+        <span class="status-dot online"></span> 785544650 • 📍 Polska
       </div>
     </div>
 
     <!-- QUICK ACTIONS -->
     <div class="quick-actions">
-      <a class="qa" title="Private Message" target="_blank"
-         href="https://xat.com/web_gear/chat/editprofile.php?UserId=785544650">💬</a>
-      <a class="qa" title="Home" target="_blank"
-         href="https://xat.me/">🏠</a>
-      <a class="qa" title="Transfer" target="_blank"
-         href="https://xat.com/transfer?UserId=785544650">💸</a>
+      <a class="qa" target="_blank" href="https://xat.com/web_gear/chat/editprofile.php?UserId=785544650">💬</a>
+      <a class="qa" target="_blank" href="https://xat.me/">🏠</a>
+      <a class="qa" target="_blank" href="https://xat.com/transfer?UserId=785544650">💸</a>
     </div>
 
     <!-- BIO -->
@@ -50,19 +37,17 @@
       Jestem zagadką, którą trudno rozwikłać.
     </div>
 
-    <!-- RELATION BUTTON -->
-    <div class="relation-wrap">
-      <button id="relationBtn" class="relation">❤️ RELATION</button>
-    </div>
+    <!-- RELATION -->
+    <button id="relationBtn" class="relation">❤️ RELATION</button>
 
     <!-- SEPARATOR -->
     <div class="separator"></div>
 
-    <!-- SOCIAL MEDIA -->
+    <!-- SOCIAL -->
     <div class="social-title">SOCIAL MEDIA</div>
     <div class="socials">
-      <a class="social" title="xat.me" target="_blank" href="https://xat.me/">🌀</a>
-      <a class="social" title="Spotify" target="_blank" href="https://open.spotify.com/">🎧</a>
+      <a class="social" target="_blank" href="https://xat.me/">🌀</a>
+      <a class="social" target="_blank" href="https://open.spotify.com/">🎧</a>
     </div>
 
     <footer class="footer">
@@ -70,46 +55,32 @@
     </footer>
   </main>
 
-  <!-- RELATION MODAL -->
+  <!-- MODAL -->
   <div id="modal" class="modal" aria-hidden="true">
     <div class="modal-content">
-      <button class="modal-close" id="modalClose">✕</button>
-
-      <div class="modal-avatar">
-        <img src="https://xatimg.com/image/7DKiHbhcCvvv.png" alt="avatar" class="avatar">
-      </div>
-
+      <button id="modalClose" class="modal-close">✕</button>
+      <img src="https://xatimg.com/image/7DKiHbhcCvvv.png" class="avatar modal-avatar">
       <div class="modal-name">RELATION</div>
-      <div class="modal-badge">MARRIED</div>
-
-      <p class="modal-text">
-        Wpisz **XAT ID**, do kogo ma iść wiadomość:
-      </p>
+      <p class="modal-text">Podaj XAT ID, do kogo ma iść wiadomość:</p>
 
       <div class="modal-actions">
-        <input id="partnerId" class="id-input" type="text" placeholder="np. 123456789">
-        <button id="openPm" class="pm-btn">XAT — PM</button>
+        <input id="partnerId" class="id-input" placeholder="np. 123456789">
+        <button id="openPm" class="pm-btn">XAT - PM</button>
       </div>
     </div>
   </div>
 
-  <script>
-    const modal = document.getElementById('modal');
-    const open = document.getElementById('relationBtn');
-    const close = document.getElementById('modalClose');
-    const pmBtn = document.getElementById('openPm');
-    const idInput = document.getElementById('partnerId');
-
-    open.onclick = () => modal.setAttribute('aria-hidden','false');
-    close.onclick = () => modal.setAttribute('aria-hidden','true');
-    modal.onclick = e => { if(e.target === modal) modal.setAttribute('aria-hidden','true'); }
-
-    pmBtn.onclick = () => {
-      const id = idInput.value.trim();
-      if(!id) return idInput.focus();
-      window.open(`https://xat.com/web_gear/chat/editprofile.php?UserId=${encodeURIComponent(id)}`);
-    }
-  </script>
+<script>
+const modal = document.getElementById("modal");
+document.getElementById("relationBtn").onclick = ()=> modal.setAttribute("aria-hidden","false");
+document.getElementById("modalClose").onclick = ()=> modal.setAttribute("aria-hidden","true");
+modal.onclick = e =>{ if(e.target===modal) modal.setAttribute("aria-hidden","true"); }
+document.getElementById("openPm").onclick = ()=>{
+  const id=document.getElementById("partnerId").value.trim();
+  if(!id) return;
+  window.open("https://xat.com/web_gear/chat/editprofile.php?UserId="+id);
+}
+</script>
 
 </body>
 </html>
