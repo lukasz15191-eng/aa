@@ -21,12 +21,13 @@
 
   <!-- CARD -->
   <main class="card">
+
     <!-- banner -->
     <div class="banner">
       <div class="banner-overlay"></div>
     </div>
 
-    <!-- header row -->
+    <!-- header -->
     <div class="header">
       <div class="avatar-wrap">
         <div class="avatar">
@@ -38,8 +39,7 @@
         <h1 class="nick">Lukasz</h1>
         <div class="role">Gamer</div>
         <div class="meta">
-          <span class="dot" title="ID"></span> 785544650
-          &nbsp;&nbsp;•&nbsp;&nbsp;📍 Polska
+          <span class="dot"></span> 785544650 • 📍 Polska
         </div>
       </div>
     </div>
@@ -66,7 +66,9 @@
       <button id="relationBtn" class="relation">❤️ RELATION</button>
     </div>
 
-    <!-- social -->
+    <!-- separator -->
+    <div class="separator"></div>
+
     <div class="social-title">SOCIAL MEDIA</div>
     <div class="socials">
       <a class="social" title="xat.me" target="_blank" href="https://xat.me/">🌀</a>
@@ -79,7 +81,7 @@
     </footer>
   </main>
 
-  <!-- RELATION MODAL -->
+  <!-- MODAL -->
   <div id="modal" class="modal" aria-hidden="true">
     <div class="modal-content">
       <button class="modal-close" id="modalClose">✕</button>
@@ -94,18 +96,16 @@
       <div class="modal-badge">MARRIED</div>
 
       <p class="modal-text">
-        Z kim chcesz powiązać relację? Wpisz **XAT ID** poniżej,
-        a otworzę PM do tej osoby.
+        Wpisz **XAT ID**, do kogo ma iść wiadomość:
       </p>
 
       <div class="modal-actions">
-        <input id="partnerId" class="id-input" type="text" placeholder="Wpisz XAT ID (np. 123456789)">
+        <input id="partnerId" class="id-input" type="text" placeholder="np. 123456789">
         <button id="openPm" class="pm-btn">XAT — PM</button>
       </div>
     </div>
   </div>
 
-  <!-- tiny JS for modal + PM -->
   <script>
     const modal = document.getElementById('modal');
     const open = document.getElementById('relationBtn');
@@ -113,19 +113,15 @@
     const pmBtn = document.getElementById('openPm');
     const idInput = document.getElementById('partnerId');
 
-    function showModal(){ modal.setAttribute('aria-hidden','false'); }
-    function hideModal(){ modal.setAttribute('aria-hidden','true'); }
+    open.onclick = () => modal.setAttribute('aria-hidden','false');
+    close.onclick = () => modal.setAttribute('aria-hidden','true');
+    modal.onclick = e => { if(e.target === modal) modal.setAttribute('aria-hidden','true'); }
 
-    open.addEventListener('click', showModal);
-    close.addEventListener('click', hideModal);
-    modal.addEventListener('click', e => { if(e.target === modal) hideModal(); });
-
-    pmBtn.addEventListener('click', () => {
-      const id = (idInput.value || '').trim();
-      if(!id) { idInput.focus(); return; }
-      const url = `https://xat.com/web_gear/chat/editprofile.php?UserId=${encodeURIComponent(id)}`;
-      window.open(url, '_blank');
-    });
+    pmBtn.onclick = () => {
+      const id = idInput.value.trim();
+      if(!id) return idInput.focus();
+      window.open(`https://xat.com/web_gear/chat/editprofile.php?UserId=${encodeURIComponent(id)}`);
+    }
   </script>
 </body>
 </html>
